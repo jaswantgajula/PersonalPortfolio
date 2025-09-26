@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaswant Gajula | Aspiring Developer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* CSS Reset & Basic Setup */
+        :root {
+            --primary-color: #00e5ff; /* Neon Cyan/Teal */
+            --secondary-color: #a855f7; /* Neon Purple */
+            --background-color: #0a0a14;
+            --text-color: #e0e0e0;
+            --glass-bg: rgba(20, 20, 35, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glow-shadow: 0 0 15px var(--primary-color), 0 0 30px var(--primary-color);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 20% 20%, rgba(0, 229, 255, 0.1), transparent 30%),
+                              radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.1), transparent 30%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        
+        /* General Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            padding: 6rem 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #fff;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: -1;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            animation: fadeIn 1s 0.2s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content .title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-color);
+            color: var(--background-color);
+            box-shadow: var(--glow-shadow);
+            transform: translateY(-3px);
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .timeline {
+            margin-top: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item {
+            padding: 1rem 1rem 1rem 2rem;
+            border-left: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 1rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 3px solid var(--background-color);
+        }
+
+        .timeline-item h4 {
+            color: var(--primary-color);
+        }
+
+        .timeline-item span {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-list li {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .project-card .glass-card {
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links a {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .project-links a i {
+            margin-right: 5px;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Resume Section */
+        #resume {
+            text-align: center;
+        }
+
+        .resume-content p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .contact-form .glass-card {
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .form-note {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-color);
+            z-index: -1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplification for no-JS version */
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-content .title {
+                font-size: 1.5rem;
+            }
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="container navbar">
+            <a href="#hero" class="logo">Jaswant<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="container hero-content">
+                <h1>Jaswant Gajula</h1>
+                <p class="title">Aspiring Software Developer</p>
+                <p class="tagline">Crafting Digital Solutions, One Line of Code at a Time.</p>
+                <a href="#projects" class="cta-button">View My Work</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text glass-card">
+                        <p>
+                            I’m a first-year Computer Science undergraduate at Scaler School of Technology, passionate about software development and problem-solving.  
+                        </p>
+                        <p>
+                            My journey began with Java and C, and I’m gradually exploring JavaScript, SQL, and web development. I enjoy building projects, breaking problems into smaller chunks, and learning through hands-on experimentation.
+                        </p>
+                    </div>
+                    <div class="achievements">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>B.Sc in Computer Science</h4>
+                            <span>2025 - Present | Scaler School of Technology</span>
+                            <p>Currently in my first year, focusing on computer science fundamentals, problem-solving, and programming.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Open Source Club Hackathon</h4>
+                            <span>August 2025</span>
+                            <p>Built 'Game Vault,' a website to fetch game details. This project was my entry for the college's open-source contributions club.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2>My Skillset</h2>
+                <div class="skills-grid">
+                    <div class="skill-category glass-card">
+                        <h3>Programming Languages</h3>
+                        <ul class="skill-list">
+                            <li>Java (Strong)</li>
+                            <li>Basic Python</li>
+                            <li>Basic C++</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category glass-card">
+                        <h3>Frontend</h3>
+                        <ul class="skill-list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>Basic JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category glass-card">
+                        <h3>Databases & Tools</h3>
+                        <ul class="skill-list">
+                            <li>Git & GitHub</li>
+                            <li>VS Code</li>
+                            <li>IntelliJ IDEA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/0a0a14/00e5ff?text=Game+Vault" alt="Game Vault Project Screenshot" class="project-image">
+                        <div class="glass-card">
+                           <h3>Game Vault</h3>
+                           <p>A website that helps users get details of any game they search for. Built during a hackathon for an open-source club.</p>
+                           <div class="project-links">
+                               <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                           </div>
+                        </div>
+                    </div>
+                     <!-- Project 2 -->
+                    <div class="project-card">
+                        <img src="https://placehold.co/600x400/0a0a14/ffffff?text=Portfolio" alt="Portfolio Website Screenshot" class="project-image">
+                        <div class="glass-card">
+                            <h3>Portfolio Website</h3>
+                            <p>My personal portfolio, designed and built from scratch using only HTML and CSS to create a futuristic, glassmorphism-inspired interface.</p>
+                            <div class="project-links">
+                               <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog">
+            <div class="container">
+                <h2>From My Blog</h2>
+                <div class="blog-grid">
+                    <!-- Blog Post 1 -->
+                    <div class="glass-card blog-card">
+                        <h3>My First Hackathon Experience</h3>
+                        <p>A recap of the intense 24 hours at Hacakathon, what I learned, and why every student should try one...</p>
+                        <a href="#">Read More &rarr;</a>
+                    </div>
+                    <!-- Blog Post 2 -->
+                    <div class="glass-card blog-card">
+                        <h3>Why I Chose Java as My First Language</h3>
+                        <p>Exploring the reasons behind starting my coding journey with Java and its powerful object-oriented features...</p>
+                        <a href="#">Read More &rarr;</a>
+                    </div>
+                    <!-- Blog Post 3 -->
+                    <div class="glass-card blog-card">
+                        <h3>Understanding Data Structures</h3>
+                        <p>Diving into the fundamental concepts of data structures and their importance in writing efficient code...</p>
+                        <a href="#">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <div class="container resume-content">
+                <h2>My Professional Journey</h2>
+                <p>My professional journey is just beginning, but I am building it on a solid foundation of academic knowledge and a passion for creating things with code. My resume provides more detail on my skills and coursework.</p>
+                <a href="#" class="cta-button">Download Resume</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <form action="#" class="glass-card">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">Send Message</button>
+                            <p class="form-note">Note: This form is a demonstration and is not currently functional.</p>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Contact Info</h3>
+                        <p>I'm currently seeking internship opportunities and am open to collaboration. Feel free to reach out!</p>
+                        <p><strong>Email:</strong> jaswant.gajula@gmail.com</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/jaswantgajula/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/jaswantgajula" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jaswant Gajula. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
